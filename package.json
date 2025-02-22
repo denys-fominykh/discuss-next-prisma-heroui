@@ -1,0 +1,53 @@
+{
+  "name": "discuss",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@heroui/react": "2.7.2",
+    "@prisma/client": "6.4.1",
+    "framer-motion": "12.4.7",
+    "next": "15.1.7",
+    "next-auth": "4.24.11",
+    "prisma": "6.4.1",
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "3.3.0",
+    "@eslint/js": "9.21.0",
+    "@next/eslint-plugin-next": "15.1.7",
+    "@types/eslint": "9.6.1",
+    "@types/node": "22.13.5",
+    "@types/react": "19.0.10",
+    "@types/react-dom": "19.0.4",
+    "@typescript-eslint/eslint-plugin": "8.24.1",
+    "@typescript-eslint/parser": "8.24.1",
+    "autoprefixer": "10.4.20",
+    "eslint": "9.21.0",
+    "eslint-config-next": "15.1.7",
+    "eslint-config-prettier": "10.0.1",
+    "eslint-plugin-prettier": "5.2.3",
+    "eslint-plugin-react-hooks": "5.1.0",
+    "eslint-plugin-tailwindcss": "3.18.0",
+    "postcss": "8.5.3",
+    "prettier": "3.5.2",
+    "tailwindcss": "3.4.1",
+    "typescript": "5.7.3"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@heroui/shared-utils",
+      "@prisma/client",
+      "@prisma/engines",
+      "esbuild",
+      "prisma",
+      "sharp"
+    ]
+  }
+}
