@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import type { Metadata } from 'next';
+import { cookies } from 'next/headers';
 import { Geist, Geist_Mono } from 'next/font/google';
 
 import { Providers } from '@/app/providers';
@@ -28,9 +29,12 @@ type TRootLayoutProps = Readonly<{
   children: ReactNode;
 }>;
 
-export default function RootLayout({ children }: TRootLayoutProps) {
+export default async function RootLayout({ children }: TRootLayoutProps) {
+  const cookieStore = await cookies();
+  const theme = cookieStore.get('theme')?.value || 'dark';
+
   return (
-    <html lang="en">
+    <html lang="en" className={theme}>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Providers>{children}</Providers>
       </body>
