@@ -9,7 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@heroui/react": "2.7.2",
+    "@heroui/button": "2.2.13",
+    "@heroui/code": "2.2.10",
+    "@heroui/input": "2.4.13",
+    "@heroui/kbd": "2.2.10",
+    "@heroui/link": "2.2.11",
+    "@heroui/listbox": "2.3.13",
+    "@heroui/navbar": "2.2.12",
+    "@heroui/snippet": "2.2.14",
+    "@heroui/switch": "2.2.12",
+    "@heroui/system": "2.4.10",
+    "@heroui/theme": "2.4.9",
     "@prisma/client": "6.4.1",
     "framer-motion": "12.4.7",
     "next": "15.1.7",
