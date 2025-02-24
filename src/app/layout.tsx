@@ -31,7 +31,7 @@ type TRootLayoutProps = Readonly<{
 
 export default async function RootLayout({ children }: TRootLayoutProps) {
   const cookieStore = await cookies();
-  const theme = cookieStore.get('theme')?.value || 'dark';
+  const theme = cookieStore.get('theme')?.value || 'light';
 
   return (
     <html lang="en" className={theme}>
