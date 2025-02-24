@@ -2,6 +2,7 @@ import { Button } from '@heroui/button';
 
 import * as actions from '@/actions';
 import { auth } from '@/auth';
+import { Profile } from '@/components/profile';
 
 export default async function HomePage() {
   const session = await auth();
@@ -17,6 +18,8 @@ export default async function HomePage() {
       </form>
 
       {session?.user ? <div>{JSON.stringify(session.user)}</div> : <div>Signet Out</div>}
+
+      <Profile />
     </div>
   );
 }
