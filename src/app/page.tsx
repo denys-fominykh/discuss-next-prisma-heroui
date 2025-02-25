@@ -1,25 +1,7 @@
-import { Button } from '@heroui/button';
-
-import * as actions from '@/actions';
-import { auth } from '@/auth';
-import { Profile } from '@/components/profile';
-
-export default async function HomePage() {
-  const session = await auth();
-
+export default function HomePage() {
   return (
     <div>
-      <form action={actions.signIn}>
-        <Button type="submit">Sign In</Button>
-      </form>
-
-      <form action={actions.signOut}>
-        <Button type="submit">Sign Out</Button>
-      </form>
-
-      {session?.user ? <div>{JSON.stringify(session.user)}</div> : <div>Signet Out</div>}
-
-      <Profile />
+      <h1>Home Page</h1>
     </div>
   );
 }
