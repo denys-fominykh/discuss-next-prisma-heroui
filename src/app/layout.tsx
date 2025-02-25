@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { cookies } from 'next/headers';
 import { Geist, Geist_Mono } from 'next/font/google';
 
+import { Header } from '@/components/header';
 import { Providers } from '@/app/providers';
 
 import '@/app/globals.css';
@@ -36,7 +37,12 @@ export default async function RootLayout({ children }: TRootLayoutProps) {
   return (
     <html lang="en" className={theme}>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Providers>{children}</Providers>
+        <div className="container mx-auto max-w-6xl px-4">
+          <Providers>
+            <Header />
+            {children}
+          </Providers>
+        </div>
       </body>
     </html>
   );
