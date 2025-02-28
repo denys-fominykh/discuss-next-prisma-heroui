@@ -6,7 +6,7 @@ import { Input, Textarea } from '@heroui/input';
 import { Popover, PopoverContent, PopoverTrigger } from '@heroui/popover';
 
 import * as actions from '@/actions';
-import { FormButton } from '@/components/common/form-button';
+import { FormButton } from '@/components/common';
 
 export default function TopicCreateForm() {
   const [formState, createTopicAction, isPending] = useActionState(actions.createTopic, {
