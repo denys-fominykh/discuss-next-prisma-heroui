@@ -6,6 +6,7 @@ import { Input, Textarea } from '@heroui/input';
 import { Popover, PopoverContent, PopoverTrigger } from '@heroui/popover';
 
 import * as actions from '@/actions';
+import { FormButton } from '@/components/common';
 
 export default function TopicCreateForm() {
   const [formState, createTopicAction, isPending] = useActionState(actions.createTopic, {
@@ -35,9 +36,9 @@ export default function TopicCreateForm() {
             />
             {formState.errors?.description ? showFormErrors(formState.errors.description) : null}
             {formState.errors?._form ? showFormErrors(formState.errors._form) : null}
-            <Button type="submit" isLoading={isPending}>
+            <FormButton isLoading={isPending} disabled={isPending}>
               Submit
-            </Button>
+            </FormButton>
           </div>
         </form>
       </PopoverContent>

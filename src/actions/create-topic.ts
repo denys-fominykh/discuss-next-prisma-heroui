@@ -1,7 +1,13 @@
 'use server';
 
+import type { Topic } from '@prisma/client';
+import { redirect } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
+
 import { auth } from '@/auth';
 import { createTopicSchema } from '@/validation';
+import { db } from '@/db';
+import paths from '@/paths';
 
 type TFormState = {
   errors?: {
@@ -12,28 +18,34 @@ type TFormState = {
 };
 
 export async function createTopic(_prevState: TFormState, formData: FormData): Promise<TFormState> {
+  const session = await auth();
+  const name = formData.get('name') as string;
+  const description = formData.get('description') as string;
+  const validation = createTopicSchema.safeParse({
+    name,
+    description,
+  });
+
+  if (!validation.success) {
+    return { errors: validation.error.flatten().fieldErrors };
+  }
+
+  if (!session || !session?.user) {
+    return {
+      errors: {
+        _form: ['You must be sign in to do this.'],
+      },
+    };
+  }
+
+  let topic: Topic;
   try {
-    const session = await auth();
-    const name = formData.get('name') as string;
-    const description = formData.get('description') as string;
-    const validation = createTopicSchema.safeParse({
-      name,
-      description,
+    topic = await db.topic.create({
+      data: {
+        slug: validation.data.name,
+        description: validation.data.description,
+      },
     });
-
-    if (!validation.success) {
-      return { errors: validation.error.flatten().fieldErrors };
-    }
-
-    if (!session || !session?.user) {
-      return {
-        errors: {
-          _form: ['You must be sign in to do this.'],
-        },
-      };
-    }
-
-    return {};
   } catch (error: unknown) {
     if (error instanceof Error) {
       return {
@@ -44,9 +56,12 @@ export async function createTopic(_prevState: TFormState, formData: FormData): P
     } else {
       return {
         errors: {
-          _form: ['Something went wrong'],
+          _form: ['Something went wrong.'],
         },
       };
     }
   }
+
+  revalidatePath('/');
+  redirect(paths.topicShow(topic.slug));
 }
