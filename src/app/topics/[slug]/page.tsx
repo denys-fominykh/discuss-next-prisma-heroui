@@ -1,7 +1,7 @@
 type TTopicShowPageProps = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 export default async function TopicShowPage({ params }: TTopicShowPageProps) {
