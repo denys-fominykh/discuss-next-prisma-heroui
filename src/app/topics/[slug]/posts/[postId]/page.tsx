@@ -4,12 +4,12 @@ import Link from 'next/link';
 // import { CommentCreateForm, CommentList } from '@/components/comments';
 import paths from '@/paths';
 
-interface TPostShowPageProps {
+type TPostShowPageProps = {
   params: Promise<{
     slug: string;
     postId: string;
   }>;
-}
+};
 
 export default async function PostShowPage({ params }: TPostShowPageProps) {
   const {
