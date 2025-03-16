@@ -1,7 +1,10 @@
 import Link from 'next/link';
 
-// import { PostShow } from '@/components/posts';
-// import { CommentCreateForm, CommentList } from '@/components/comments';
+import {
+  CommentCreateForm,
+  // CommentList,
+} from '@/components/comments';
+import { PostShow } from '@/components/posts';
 import paths from '@/paths';
 
 type TPostShowPageProps = {
@@ -12,18 +15,15 @@ type TPostShowPageProps = {
 };
 
 export default async function PostShowPage({ params }: TPostShowPageProps) {
-  const {
-    slug,
-    // postId,
-  } = await params;
+  const { slug, postId } = await params;
 
   return (
     <div className="space-y-3">
       <Link className="underline decoration-solid" href={paths.topicShow(slug)}>
         {'< '}Back to {slug}
       </Link>
-      {/* <PostShow /> */}
-      {/* <CommentCreateForm postId={postId} startOpen /> */}
+      <PostShow postId={postId} />
+      <CommentCreateForm postId={postId} startOpen />
       {/* <CommentList comments={comments} /> */}
     </div>
   );
