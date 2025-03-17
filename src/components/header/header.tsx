@@ -1,6 +1,6 @@
-import Link from 'next/link';
 import { Input } from '@heroui/input';
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from '@heroui/navbar';
+import Link from 'next/link';
 
 import { HeaderAuth } from '@/components/header-auth';
 

@@ -1,5 +1,4 @@
 import { PostCreateForm, PostList } from '@/components/posts';
-
 import { fetchPostsByTopicSlug } from '@/db/queries/posts';
 
 type TTopicShowPageProps = {

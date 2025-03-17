@@ -1,19 +1,21 @@
-// import { CommentShow } from '@/components/comments';
+import { CommentShow } from '@/components/comments';
+import type { TCommentWithAuthor } from '@/db/queries/comments';
 
-// type TCommentListProps = {};
+type TCommentListProps = {
+  fetchData: () => Promise<TCommentWithAuthor[]>;
+};
 
-// TODO: Get a list of comments from somewhere
-export default function CommentList() {
-  // const topLevelComments = comments.filter((comment) => comment.parentId === null);
-  //
-  // return (
-  //   <div className="space-y-3">
-  //     <h1 className="text-lg font-bold">All {comments.length} comments</h1>
-  //     {topLevelComments.map((comment) => (
-  //       <CommentShow key={comment.id} commentId={comment.id} comments={comments} />
-  //     ))}
-  //   </div>
-  // );
+export default async function CommentList({ fetchData }: TCommentListProps) {
+  const comments = await fetchData();
 
-  return <div>Comment List</div>;
+  const topLevelComments = comments.filter((comment) => comment.parentId === null);
+
+  return (
+    <div className="space-y-3">
+      <h1 className="text-lg font-bold">All {comments.length} comments</h1>
+      {topLevelComments.map((comment) => (
+        <CommentShow key={comment.id} commentId={comment.id} comments={comments} />
+      ))}
+    </div>
+  );
 }

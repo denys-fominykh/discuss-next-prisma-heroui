@@ -5,9 +5,9 @@ import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
 import { auth } from '@/auth';
-import { createPostSchema } from '@/validation';
 import { db } from '@/db';
 import paths from '@/paths';
+import { createPostSchema } from '@/validation';
 
 type TFormState = {
   errors?: {
