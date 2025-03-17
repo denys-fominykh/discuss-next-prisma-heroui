@@ -1,15 +1,16 @@
 import Image from 'next/image';
 
 import { CommentCreateForm } from '@/components/comments';
-import type { TCommentWithAuthor } from '@/db/queries/comments';
+import { type TCommentWithAuthor, fetchCommentsByPostId } from '@/db/queries/comments';
 
 type TCommentShowProps = {
   commentId: string;
-  comments: TCommentWithAuthor[];
+  postId: string;
 };
 
-export default function CommentShow({ commentId, comments }: TCommentShowProps) {
-  const comment = comments.find((c) => c.id === commentId);
+export default async function CommentShow({ commentId, postId }: TCommentShowProps) {
+  const comments: TCommentWithAuthor[] = await fetchCommentsByPostId(postId);
+  const comment: TCommentWithAuthor | undefined = comments.find((c) => c.id === commentId);
 
   if (!comment) {
     return null;
@@ -36,7 +37,7 @@ export default function CommentShow({ commentId, comments }: TCommentShowProps) 
       </div>
       <div className="pl-4">
         {children.map((child) => (
-          <CommentShow key={child.id} commentId={child.id} comments={comments} />
+          <CommentShow key={child.id} commentId={child.id} postId={postId} />
         ))}
       </div>
     </div>
