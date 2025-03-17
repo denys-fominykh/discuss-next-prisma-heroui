@@ -1,8 +1,8 @@
 'use client';
 
-import { useActionState, useEffect, useRef, useState } from 'react';
 import { Button } from '@heroui/button';
 import { Textarea } from '@heroui/input';
+import { useActionState, useEffect, useRef, useState } from 'react';
 
 import * as actions from '@/actions';
 import { FormButton, FormErrors } from '@/components/common';
@@ -54,7 +54,7 @@ export default function CommentCreateForm({
       <Button size="sm" variant="light" onPress={() => setOpen(!open)}>
         Reply
       </Button>
-      {open && form}
+      {open ? form : null}
     </div>
   );
 }

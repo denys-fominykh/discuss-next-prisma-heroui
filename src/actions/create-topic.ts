@@ -1,13 +1,13 @@
 'use server';
 
 import type { Topic } from '@prisma/client';
-import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
 
 import { auth } from '@/auth';
-import { createTopicSchema } from '@/validation';
 import { db } from '@/db';
 import paths from '@/paths';
+import { createTopicSchema } from '@/validation';
 
 type TFormState = {
   errors?: {

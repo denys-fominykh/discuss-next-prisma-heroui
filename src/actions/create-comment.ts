@@ -4,8 +4,8 @@ import { revalidatePath } from 'next/cache';
 
 import { auth } from '@/auth';
 import { db } from '@/db';
-import { createCommentSchema } from '@/validation';
 import paths from '@/paths';
+import { createCommentSchema } from '@/validation';
 
 type TCreateCommentParams = {
   postId: string;

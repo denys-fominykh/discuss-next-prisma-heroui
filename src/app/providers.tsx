@@ -1,6 +1,6 @@
-import type { ReactNode } from 'react';
 import { HeroUIProvider } from '@heroui/system';
 import { SessionProvider } from 'next-auth/react';
+import type { ReactNode } from 'react';
 
 type TProvidersProps = {
   readonly children: ReactNode;

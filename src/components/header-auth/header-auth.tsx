@@ -1,11 +1,11 @@
 'use client';
 
-import type { ReactNode } from 'react';
 import { Avatar } from '@heroui/avatar';
 import { Button } from '@heroui/button';
 import { NavbarItem } from '@heroui/navbar';
 import { Popover, PopoverTrigger, PopoverContent } from '@heroui/popover';
 import { useSession } from 'next-auth/react';
+import type { ReactNode } from 'react';
 
 import * as actions from '@/actions';
 
