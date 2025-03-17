@@ -44,11 +44,11 @@ export default tsEslint.config(
       sourceType: 'module',
     },
     rules: {
-      'react/jsx-uses-react': 'error',
-      'react/jsx-uses-vars': 'error',
+      // 'react/jsx-uses-react': 'error', // it's already being included by the Next.js ESLint configurations
+      // 'react/jsx-uses-vars': 'error', // it's already being included by the Next.js ESLint configurations
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
-      'jsx-a11y/alt-text': 'error',
+      // 'jsx-a11y/alt-text': 'error', // it's already being included by the Next.js ESLint configurations
       'import/no-named-as-default': 0,
       'import/order': [
         'error',
