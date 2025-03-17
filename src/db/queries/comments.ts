@@ -1,3 +1,5 @@
+import { cache } from 'react';
+
 import { db } from '@/db';
 
 // NOTE: This type manually written based on the Comment List component requirements
@@ -12,7 +14,7 @@ import { db } from '@/db';
 // NOTE: This type we get automatically based on the return type of the fetchCommentsByPostId function
 export type TCommentWithAuthor = Awaited<ReturnType<typeof fetchCommentsByPostId>>[number];
 
-export function fetchCommentsByPostId(postId: string) {
+export const fetchCommentsByPostId = cache((postId: string) => {
   return db.comment.findMany({
     where: {
       postId,
@@ -26,4 +28,4 @@ export function fetchCommentsByPostId(postId: string) {
       },
     },
   });
-}
+});
