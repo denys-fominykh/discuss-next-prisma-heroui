@@ -7,6 +7,8 @@ type TPostShowProps = {
 };
 
 export default async function PostShow({ postId }: TPostShowProps) {
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+
   const post = await db.post.findFirst({
     where: {
       id: postId,
