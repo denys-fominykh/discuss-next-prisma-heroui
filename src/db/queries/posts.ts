@@ -17,6 +17,43 @@ import { db } from '@/db';
 // NOTE: This type we get automatically based on the return type of the fetchPostsByTopicSlug function
 export type TPostWithData = Awaited<ReturnType<typeof fetchPostsByTopicSlug>>[number];
 
+export function fetchPostsBySearchTerm(term: string): Promise<TPostWithData[]> {
+  return db.post.findMany({
+    include: {
+      topic: {
+        select: {
+          slug: true,
+        },
+      },
+      user: {
+        select: {
+          name: true,
+          image: true,
+        },
+      },
+      _count: {
+        select: {
+          comments: true,
+        },
+      },
+    },
+    where: {
+      OR: [
+        {
+          title: {
+            contains: term,
+          },
+        },
+        {
+          content: {
+            contains: term,
+          },
+        },
+      ],
+    },
+  });
+}
+
 export function fetchPostsByTopicSlug(slug: string) {
   return db.post.findMany({
     where: {
@@ -41,5 +78,36 @@ export function fetchPostsByTopicSlug(slug: string) {
         },
       },
     },
+  });
+}
+
+export function fetchTopPosts(): Promise<TPostWithData[]> {
+  return db.post.findMany({
+    orderBy: [
+      {
+        comments: {
+          _count: 'desc',
+        },
+      },
+    ],
+    include: {
+      topic: {
+        select: {
+          slug: true,
+        },
+      },
+      user: {
+        select: {
+          name: true,
+          image: true,
+        },
+      },
+      _count: {
+        select: {
+          comments: true,
+        },
+      },
+    },
+    take: 5,
   });
 }

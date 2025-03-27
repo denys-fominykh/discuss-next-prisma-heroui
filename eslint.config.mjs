@@ -17,14 +17,14 @@ const compat = new FlatCompat({
     js.configs.recommended,
     next.configs.recommended,
     importPlugin.flatConfigs.recommended,
-    prettierConfigRecommended,
-    ...tailwind.configs['flat/recommended'],
   ],
   allConfig: js.configs.all,
 });
 
 export default tsEslint.config(
   tsEslint.configs.recommended,
+  prettierConfigRecommended,
+  ...tailwind.configs['flat/recommended'],
   ...compat.extends('next/core-web-vitals', 'next/typescript'),
   {
     files: ['**/*.{ts,tsx,js,jsx,mjs,cjs}'],
